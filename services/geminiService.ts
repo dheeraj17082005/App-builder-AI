@@ -1,6 +1,14 @@
 
 import { GoogleGenAI } from "@google/genai";
 
+// Custom error for API key issues to be caught by the UI
+export class ApiKeyError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'ApiKeyError';
+  }
+}
+
 // FIX: Updated SYSTEM_INSTRUCTION to align with API key best practices.
 // The model is now instructed not to generate a UI input for the API key.
 // Instead, it should use a placeholder in the code that the user can replace.
@@ -303,10 +311,6 @@ Remember to integrate this new capability smoothly with your existing knowledge 
 `;
 
 export const generateApp = async (prompt: string, model: string): Promise<string> => {
-  if (!process.env.API_KEY) {
-    throw new Error("The Gemini API Key is not configured. Please set the API_KEY environment variable to use the application.");
-  }
-
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
@@ -320,8 +324,9 @@ export const generateApp = async (prompt: string, model: string): Promise<string
     return response.text;
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    if (error instanceof Error && error.message.toLowerCase().includes('api key not valid')) {
-       throw new Error("The provided Gemini API Key is invalid or expired. Please check your key and ensure it has the correct permissions, then try again.");
+    const errorMessage = error instanceof Error ? error.message.toLowerCase() : '';
+    if (errorMessage.includes('api key') || errorMessage.includes('requested entity was not found')) {
+       throw new ApiKeyError("The provided Gemini API Key is invalid or expired. Please select a valid key and try again.");
     }
     throw new Error("Failed to generate app from Gemini API.");
   }
