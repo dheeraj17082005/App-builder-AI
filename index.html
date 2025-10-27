@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AppBuilderAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'luxe-darkest': '#111111',
+              'luxe-dark': '#1C1C1C',
+              'luxe-border': '#2D2D2D',
+              'luxe-text-primary': '#EAEAEA',
+              'luxe-text-secondary': '#888888',
+              'luxe-accent': '#D7A022',
+              'luxe-accent-hover': '#F0B940',
+            },
+          },
+        },
+      }
+    </script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react-syntax-highlighter": "https://aistudiocdn.com/react-syntax-highlighter@^15.5.0",
+    "react-syntax-highlighter/": "https://aistudiocdn.com/react-syntax-highlighter@^15.5.0/",
+    "prettier/standalone": "https://unpkg.com/prettier@3.3.2/standalone.js",
+    "prettier/plugins/babel": "https://unpkg.com/prettier@3.3.2/plugins/babel.js",
+    "prettier/plugins/html": "https://unpkg.com/prettier@3.3.2/plugins/html.js",
+    "prettier/plugins/typescript": "https://unpkg.com/prettier@3.3.2/plugins/typescript.js",
+    "prettier/plugins/estree": "https://unpkg.com/prettier@3.3.2/plugins/estree.js",
+    "prettier/": "https://aistudiocdn.com/prettier@^3.6.2/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

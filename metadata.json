@@ -1,0 +1,7 @@
+{
+  "name": "AppBuilderAI",
+  "description": "An AI-powered application that generates small, functional web apps from simple user instructions. Describe your app idea, and the AI will generate the complete working code, an explanation, and instructions on how to run it.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
